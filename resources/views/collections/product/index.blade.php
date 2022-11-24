@@ -98,12 +98,12 @@
                                 </div>
                                 <input type="hidden" name="price" class="form-control" value="{{$product->price}}">
 
-                                {{-- <div class="col-md-12 my-auto">
+                                <div class="col-md-12 my-auto">
                                     <div class="quantity">
                                         <div class="input-group">
-                                            <span class="btn btn1 btn-warning decrement-btn"><i class="fa fa-minus"> </i></span>
+                                            {{-- <span class="btn btn1 btn-warning decrement-btn"><i class="fa fa-minus"> </i></span>
                                             <input type="text" name="quantity" class="input-quantity qty-input" value="1"/>
-                                            <span class="btn btn1 btn-warning increment-btn"><i class="fa fa-plus"></i></span>
+                                            <span class="btn btn1 btn-warning increment-btn"><i class="fa fa-plus"></i></span> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -113,8 +113,8 @@
                                 <input type="hidden" name="status" id="status" class="form-control" value="new">
                                 <div class="col-md-12 mt-2">
 
-                                    @if ($product->status == 'active')
-                                        <button type="submit" class="btn btn1 btn-success">Add Cart</button>
+                                    {{-- @if ($product->status == 'active')
+                                        <button type="hidden" class="btn btn1 btn-success">Add Cart</button>
                                     @else
                                         <div class="btn btn1  btn-danger">Not Available</div>
                                     @endif --}}

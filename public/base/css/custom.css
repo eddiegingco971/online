@@ -19,6 +19,23 @@
   .carousel-item {
     height: 33rem;
   }
+  .container .carousel-caption{
+    text-align: start;
+  }
+  .container .carousel-caption h1{
+    margin-bottom: 40px;
+    color: yellow !important;
+    font-weight: 500;
+    text-shadow: #2874f0;
+  }
+  .container .carousel-caption p{
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .container .carousel-caption a{
+    margin-bottom: 50px;
+  }
 
     .bd-placeholder-img {
     font-size: 1.125rem;
