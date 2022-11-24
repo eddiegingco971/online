@@ -98,6 +98,14 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{url('/sizing')}}" class="nav-link active">
+              {{-- <i class="nav-icon fas fa-layer-group"></i> --}}
+              <i class="nav-icon fa fa-balance-scale" aria-hidden="true"></i>
+              <p>Sizing Management</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{url('/product')}}" class="nav-link active">
               <i class="nav-icon fas fa-briefcase"></i>
               <p>Product Management</p>

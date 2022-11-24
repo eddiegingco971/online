@@ -11,6 +11,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\SizingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -72,6 +73,13 @@ Route::group(['middleware' => ['auth', 'admin']], function (){
     Route::get('/edit-category/{id}', [CategoryController::class, 'edit']);
     Route::put('/update-category/{id}', [CategoryController::class, 'update']);
     Route::get('/delete-category/{id}', [CategoryController::class, 'destroy']);
+
+
+    Route::get('/sizing', [SizingController::class, 'index'])->name('sizing');
+    Route::post('/sizing-create', [SizingController::class, 'store']);
+    Route::get('/edit-sizing/{id}', [SizingController::class, 'edit']);
+    Route::put('/update-sizing/{id}', [SizingController::class, 'update']);
+    Route::get('/delete-sizing/{id}', [SizingController::class, 'destroy']);
 
     Route::get('/order', [OrderController::class, 'index'])->name('order');
     Route::get('/delivered', [OrderController::class, 'orderDelivered']);
