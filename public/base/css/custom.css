@@ -191,8 +191,12 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .main-navbar .top-navbar .brand-name{
+        color: #fff;
+        font-size: 30px;
+    }
     .main-navbar .top-navbar .nav-link{
-        font-size: 14px;
+        font-size: 16px;
         padding: 8px 10px;
     }
 }
@@ -226,7 +230,7 @@
 }
 @media only screen and (max-width: 600px) {
     .main-navbar .bot-navbar .nav-link{
-        font-size: 10px;
+        font-size: 16px;
         padding: 8px 10px;
     }
 }
@@ -387,7 +391,6 @@
 
 
 
-/* Cart or Wishlist */
 .shopping-cart .cart-header{
     padding: 10px;
 }
@@ -402,7 +405,7 @@
     background-color: #fff;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
     padding: 10px 10px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .shopping-cart .cart-item .product-name{
     font-size: 16px;

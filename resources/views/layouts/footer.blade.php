@@ -1,5 +1,5 @@
 
-<div class="footer-area  d-none d-sm-none d-md-block d-lg-block">
+<div class="footer-area">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -50,13 +50,14 @@
         </div>
     </div>
 </div>
-<div class="copyright-area d-none d-sm-none d-md-block d-lg-block">
+{{-- <div class="copyright-area d-none d-sm-none d-md-block d-lg-block"> --}}
+<div class="copyright-area">
     <div class="container ">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <p class=""> &copy; 2022 - Mac Kaon FoodHub. All rights reserved.</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 d-none d-sm-none d-md-block d-lg-block" >
                 <div class="social-media">
                     Get Connected:
                     <a href="https://www.facebook.com/macjemsmackaon/"><i class="fab fa-facebook-square"></i></a>

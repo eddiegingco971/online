@@ -39,14 +39,14 @@
   </head>
   <body>
 
-    @include('layouts.components.preloader')
+    {{-- @include('layouts.components.preloader') --}}
 
     <header>
         @include('layouts.base-navbar')
     </header>
 
     <main>
-        {{-- @if (session('status'))
+        @if (session('status'))
         <div class="alert alert-success m-2 text-center" role="alert">
             {{ session('status') }}
         </div>
@@ -56,7 +56,7 @@
             <div class="alert alert-warning m-2 text-center" role="alert">
                 {{ session('error') }}
             </div>
-        @endif --}}
+        @endif
 
         @yield('content')
 
@@ -96,11 +96,11 @@
 
 <script src="{{asset('/plugins')}}/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
-<script src="{{asset('/plugins')}}/datatables/jquery.dataTables.min.js"></script>
+{{-- <script src="{{asset('/plugins')}}/datatables/jquery.dataTables.min.js"></script>
 <script src="{{asset('/plugins')}}/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="{{asset('/plugins')}}/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="{{asset('/plugins')}}/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-{{-- <script src="{{asset('/plugins')}}/datatables-buttons/js/buttons.html5.min.js"></script> --}}
+<script src="{{asset('/plugins')}}/datatables-buttons/js/buttons.html5.min.js"></script> --}}
 
   </body>
 </html>
