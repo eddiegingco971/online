@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('product_photo');
             $table->string('product_name');
-            $table->string('price');
+            $table->unsignedBigInteger('sizing_id');
             $table->mediumText('description');
             $table->unsignedBigInteger('category_id');
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
+            $table->foreign('sizing_id')->references('id')->on('sizings')->onDelete('CASCADE');
         });
     }
 

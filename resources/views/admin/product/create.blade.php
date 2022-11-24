@@ -77,6 +77,21 @@
                       @enderror
                   </div>
 
+                  <div class="form-group">
+                    <label for="sizing_id" class="col-form-label">Sizing</label>
+                    <select class="form-select form-control" name="sizing_id">
+                      <option value="">--Select any category--</option>
+                        @foreach ($sizings as $sizing)
+                        {{-- @if(request()->category_id == $sizing->category_id) --}}
+                          <option value="{{$sizing->id}}">{{$sizing->sizing_name}}</option>
+                          {{-- @endif --}}
+                        @endforeach
+                    </select>
+                    @error('sizing_id')
+                        <div class="text-danger">{{$message}}</div>
+                      @enderror
+                  </div>
+
                   <div class="form-group mb-3">
                     <label for="product_photo" class="col-form-label">Product Image</label>
                     <input type="file" name="product_photo" class="form-control" id="product_photo">
@@ -99,13 +114,9 @@
                             <div class="text-danger">{{$message}}</div>
                           @enderror
                       </div>
-                  <div class="form-group">
-                    <label for="price" class="col-form-label">Price</label>
-                    <input type="price" name="price" class="form-control" id="price" placeholder="0.00">
-                    @error('price')
-                        <div class="text-danger">{{$message}}</div>
-                      @enderror
-                  </div>
+
+
+
                   <div class="form-group">
                     <label for="status" id="status">Status</label>
                     <select  type="status" name="status" class="form-select form-control" id="status" >

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sizing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -26,16 +27,30 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        $products = Product::get('category_id');
+        $products = Product::get('category_id', 'id');
+        // $category = Category::find($data['category_id']);
+        // dd($category);
+        $productSizings = Product::get('sizing_id' , 'id');
+        $sizings = Sizing::get();
         $categories = Category::where('created_at', '!=', null)->get();
-        return view('admin.product.create',  compact('categories'));
+        return view('admin.product.create',  compact('categories', 'sizings', 'products'));
+        // $request->validate([
+        //     'category_id' => 'required',
+        // ]);
+        // $category = Category::find($request->category_id);
+
+        // $sizings = Sizing::find($category);
+
         // $request->validate([
         //     'product_photo' => 'required|string',
         //     'product_name' => 'required|string',
         //     'quantity' => 'required|numeric',
+        //     'category_id'=>'required|',
+        //     'sizing_id' =>'required|numeric',
         //     'price' => 'required|string',
         // ]);
-
+        // $category = Category::find($request->category_id);
+        // dd($category);
         // Product::create([
         //     'product_photo'=> $request->product_photo,
         //     'product_name'=> $request->product_name,
@@ -56,7 +71,7 @@ class ProductController extends Controller
     {
         $products = new Product;
         $products->product_name = $request->input('product_name');
-        $products->price = $request->input('price');
+        $products->sizing_id = $request->input('sizing_id');
         $products->description = $request->input('description');
         $products->category_id = $request->input('category_id');
         $products->status = $request->input('status');
@@ -64,7 +79,7 @@ class ProductController extends Controller
         $request->validate([
             'product_photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg,jfif,webp|max:2048',
             'product_name' => 'required|string|max:255',
-            'price' => 'required|numeric',
+            'sizing_id' => 'required',
             'description'=>'required|string|max:255',
             'category_id'=> 'required',
             'status'=> 'required'
@@ -120,7 +135,7 @@ class ProductController extends Controller
      public function update(Request $request, $id){
         $products = Product::find($id);
         $products->product_name = $request->input('product_name');
-        $products->price = $request->input('price');
+        $products->sizing_id = $request->input('sizing_id');
         $products->description = $request->input('description');
         $products->category_id = $request->input('category_id');
         $products->status = $request->input('status');

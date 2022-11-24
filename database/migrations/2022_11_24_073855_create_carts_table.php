@@ -22,8 +22,8 @@ return new class extends Migration
             $table->enum('status',['new','progress','delivered','cancel'])->default('new');
             $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
         });
     }
 

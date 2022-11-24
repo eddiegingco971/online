@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label for="status" class="col-form-label">Status</label>
                     <select class="form-select form-control" name="status">
-                      <option hidden="true" value="">--Select Status--</option>
+                      {{-- <option hidden="true" value="">--Select Status--</option> --}}
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
