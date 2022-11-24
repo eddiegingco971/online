@@ -43,8 +43,20 @@
             </a>
           </li>
 
+          {{-- <li class="nav-header">Banner</li> --}}
+
+          <li class="nav-item">
+            <a href="{{url('/slider')}}" class="nav-link active">
+              <i class="nav-icon far fa-images"></i>
+              <p>
+                Home Slider
+                <span class="badge badge-danger right"></span>
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Order Management
@@ -119,19 +131,16 @@
             </a>
           </li>
 
-
-
-          <li class="nav-header">Banner</li>
-
           <li class="nav-item">
-            <a href="{{url('/slider')}}" class="nav-link">
-              <i class="nav-icon far fa-images"></i>
-              <p>
-                Home Slider
-                <span class="badge badge-danger right"></span>
-              </p>
+            <a href="{{url('/fee')}}" class="nav-link active">
+              <i class="nav-icon fa fa-motorcycle" aria-hidden="true"></i>
+              <p>Fee Management</p>
             </a>
           </li>
+
+
+
+
 
           {{-- <li class="nav-header">Events</li>
           <li class="nav-item">

@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\FeeController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -80,6 +81,13 @@ Route::group(['middleware' => ['auth', 'admin']], function (){
     Route::get('/edit-sizing/{id}', [SizingController::class, 'edit']);
     Route::put('/update-sizing/{id}', [SizingController::class, 'update']);
     Route::get('/delete-sizing/{id}', [SizingController::class, 'destroy']);
+
+    Route::get('/fee', [FeeController::class, 'index'])->name('fee');
+    Route::post('/fee-create', [FeeController::class, 'store']);
+    Route::get('/edit-fee/{id}', [FeeController::class, 'edit']);
+    Route::put('/update-fee/{id}', [FeeController::class, 'update']);
+    Route::get('/delete-fee/{id}', [FeeController::class, 'destroy']);
+
 
     Route::get('/order', [OrderController::class, 'index'])->name('order');
     Route::get('/delivered', [OrderController::class, 'orderDelivered']);
