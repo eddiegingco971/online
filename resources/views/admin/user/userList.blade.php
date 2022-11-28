@@ -49,7 +49,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6 mt-3">
-                <h1>Customer Management</h1>
+                <h1>User Management</h1>
             </div>
             {{-- <div class="col-sm-6 mt-3">
                 <ol class="breadcrumb float-sm-right">
