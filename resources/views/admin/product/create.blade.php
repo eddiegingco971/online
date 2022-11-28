@@ -80,7 +80,7 @@
                   <div class="form-group">
                     <label for="sizing_id" class="col-form-label">Sizing</label>
                     <select class="form-select form-control" name="sizing_id">
-                      <option value="">--Select any category--</option>
+                      <option value="">--Select any Sizing--</option>
                         @foreach ($sizings as $sizing)
                         {{-- @if(request()->category_id == $sizing->category_id) --}}
                           <option value="{{$sizing->id}}">{{$sizing->sizing_name}}</option>
