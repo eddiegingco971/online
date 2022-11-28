@@ -51,7 +51,7 @@
                 <div class="container-fluid">
                       <div class="card elevation-3">
                         <div class="card-header text-center">
-                          <h1>Edit Category</h1>
+                          <h1>Edit Fee</h1>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
