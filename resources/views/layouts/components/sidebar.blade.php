@@ -125,16 +125,17 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{url('/user-list')}}" class="nav-link active">
-              <i class="nav-icon fas fa-user"></i>
-              <p>User Management</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
             <a href="{{url('/fee')}}" class="nav-link active">
               <i class="nav-icon fa fa-motorcycle" aria-hidden="true"></i>
               <p>Fee Management</p>
+            </a>
+          </li>
+
+        <li class="nav-header">Core</li>
+          <li class="nav-item">
+            <a href="{{url('/user-list')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>User Management</p>
             </a>
           </li>
 
