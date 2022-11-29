@@ -105,7 +105,7 @@
           </div><!-- /.container-fluid -->
         </section>
 
-        <section class="content">
+        <section class="content card" >
           <div class="container-fluid">
             <div class="row">
               <div class="col-12">
@@ -151,13 +151,13 @@
                       </address>
                     </div>
                     <!-- /.col -->
-                    <div class="col-sm-4 invoice-col">
+                    {{-- <div class="col-sm-4 invoice-col">
                       <b>Invoice #007612</b><br>
                       <br>
                       <b>Order ID:</b> 4F3S8J<br>
                       <b>Payment Due:</b> 2/22/2014<br>
                       <b>Account:</b> 968-34567
-                    </div>
+                    </div> --}}
                     <!-- /.col -->
                   </div>
                   <!-- /.row -->
@@ -238,7 +238,7 @@
                           </tr>
                           <tr>
                             <th>Total:</th>
-                            <td>₱ 265.24</td>
+                            <td>₱ </td>
                           </tr>
                         </table>
                       </div>
