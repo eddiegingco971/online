@@ -3,14 +3,15 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cart;
-use App\Models\Category;
+use App\Models\Price;
 use App\Models\Product;
 use Livewire\Component;
+use App\Models\Category;
 
 class ViewProduct extends Component
 {
     public $productId;
-    public $product, $product_photo, $product_name, $description, $price, $status, $category_id;
+    public $product, $product_photo, $product_name, $description, $status, $category_id;
 
     // public function loadProducts(){
     //     $products = Product::find('id', $productId);
@@ -43,7 +44,7 @@ class ViewProduct extends Component
         $product = Product::find($this->productId);
         $this->product_photo = $product->product_photo;
         $this->product_name = $product->product_name;
-        $this->price = $product->price;
+        $this->price_id = $product->price_id;
         $this->description = $product->description;
         $this->category_id = $product->category_id;
         $this->status = $product->status;
@@ -55,8 +56,9 @@ class ViewProduct extends Component
 
     public function render()
     {
+        $prices = Price::get();
         $products=Product::get();
-        return view('livewire.view-product', compact('products'), $this->loadCarts());
+        return view('livewire.view-product', compact('products', 'prices'), $this->loadCarts());
         // return view('livewire.view-product', $this->loadProducts());
     }
 }

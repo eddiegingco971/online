@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Cart;
+use App\Models\Price;
 use App\Models\Sizing;
 use App\Models\Category;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -15,8 +16,9 @@ class Product extends Model
         'product_photo',
         'product_name',
         'description',
-        'price',
+        // 'price',
         'category_id',
+        'price_id',
         'status'
     ];
 
@@ -26,7 +28,7 @@ class Product extends Model
     public function carts(){
         return $this->hasMany(Cart::class, 'product_id', 'id');
     }
-    // public function sizings(){
-    //     return $this->hasMany(Sizing::class, 'sizing_id', 'id');
-    // }
+    public function prices(){
+        return $this->belongsTo(Price::class, 'price_id', 'id');
+    }
 }

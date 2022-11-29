@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
+use App\Models\Price;
 use App\Models\Sizing;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -29,7 +30,8 @@ class ProductController extends Controller
     {
         $products = Product::get('category_id');
         $categories = Category::where('created_at', '!=', null)->get();
-        return view('admin.product.create',  compact('categories', 'products'));
+        $prices = Price::where('created_at', '!=', null)->get();
+        return view('admin.product.create',  compact('categories', 'products', 'prices'));
         // $products = Product::get('category_id', 'id');
         // $productSizings = Product::get('sizing_id' , 'id');
         // $sizings = Sizing::get();
@@ -72,17 +74,19 @@ class ProductController extends Controller
     {
         $products = new Product;
         $products->product_name = $request->input('product_name');
-        $products->price = $request->input('price');
+        // $products->price = $request->input('price');
         $products->description = $request->input('description');
         $products->category_id = $request->input('category_id');
+        $products->price_id = $request->input('price_id');
         $products->status = $request->input('status');
 
         $request->validate([
             'product_photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg,jfif,webp|max:2048',
             'product_name' => 'required|string|max:255',
-            'price' => 'required',
+            // 'price' => 'required',
             'description'=>'required|string|max:255',
             'category_id'=> 'required',
+            'price_id'=> 'required',
             'status'=> 'required'
         ]);
 
@@ -122,7 +126,8 @@ class ProductController extends Controller
     {
         $products = Product::find($id);
         $categories = Category::where('created_at', '!=', null)->get();
-        return view('admin.product.edit', compact('products','categories'));
+        $prices = Price::where('created_at', '!=', null)->get();
+        return view('admin.product.edit', compact('products','categories', 'prices'));
     }
 
       /**
@@ -136,9 +141,10 @@ class ProductController extends Controller
      public function update(Request $request, $id){
         $products = Product::find($id);
         $products->product_name = $request->input('product_name');
-        $products->price = $request->input('price');
+        // $products->price = $request->input('price');
         $products->description = $request->input('description');
         $products->category_id = $request->input('category_id');
+        $products->price_id = $request->input('price_id');
         $products->status = $request->input('status');
 
         if($request->hasFile('product_photo')){

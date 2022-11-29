@@ -77,20 +77,21 @@
                       @enderror
                   </div>
 
-                  {{-- <div class="form-group">
-                    <label for="sizing_id" class="col-form-label">Sizing</label>
-                    <select class="form-select form-control" name="sizing_id">
+                  @php
+                  $prices=DB::table('prices')->get();
+                  @endphp
+                  <div class="form-group">
+                    <label for="price_id" class="col-form-label">Price</label>
+                    <select class="form-select form-control" name="price_id">
                       <option value="">--Select any Sizing--</option>
-                        @foreach ($sizings as $sizing)
-
-                          <option value="{{$sizing->id}}">{{$sizing->sizing_name}}</option>
-
+                        @foreach ($prices as $price)
+                          <option value="{{$price->id}}">{{$price->sizes}} - {{$price->price}}</option>
                         @endforeach
                     </select>
-                    @error('sizing_id')
+                    @error('price_id')
                         <div class="text-danger">{{$message}}</div>
                       @enderror
-                  </div> --}}
+                  </div>
 
                   <div class="form-group mb-3">
                     <label for="product_photo" class="col-form-label">Product Image</label>
@@ -115,13 +116,13 @@
                           @enderror
                       </div>
 
-                      <div class="form-group">
+                      {{-- <div class="form-group">
                         <label for="price" class="col-form-label">Price</label>
                         <input type="price" name="price" class="form-control" id="price" placeholder="0">
                         @error('description')
                             <div class="text-danger">{{$message}}</div>
                           @enderror
-                      </div>
+                      </div> --}}
 
 
                   <div class="form-group">
