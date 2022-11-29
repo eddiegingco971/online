@@ -15,7 +15,7 @@ class Product extends Model
         'product_photo',
         'product_name',
         'description',
-        'sizing_id',
+        'price',
         'category_id',
         'status'
     ];
@@ -26,7 +26,7 @@ class Product extends Model
     public function carts(){
         return $this->hasMany(Cart::class, 'product_id', 'id');
     }
-    public function sizings(){
-        return $this->hasMany(Sizing::class, 'sizing_id', 'id');
-    }
+    // public function sizings(){
+    //     return $this->hasMany(Sizing::class, 'sizing_id', 'id');
+    // }
 }

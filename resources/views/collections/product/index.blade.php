@@ -95,6 +95,7 @@
                                 <div>
                                     <span class="selling-price">₱{{$product->price}}</span>
                                     {{-- <span class="original-price">₱799</span> --}}
+                                    <span class="text-danger" style="font-weight:bold">{{$product->description}}</span>
                                 </div>
                                 <input type="hidden" name="price" class="form-control" value="{{$product->price}}">
 

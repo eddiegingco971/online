@@ -118,7 +118,7 @@
 
 </div><!-- /.container --> --}}
 
-<div class="py-5">
+{{-- <div class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -142,7 +142,6 @@
                                     @endif
                                 </div>
                                 <div class="product-card-body">
-                                    {{-- <p class="product-brand">{{ $product->brand }}</p> --}}
                                      <p class="product-brand"></p>
                                     <h5 class="product-name">
                                         <a href="{{url('select', ['product'=>$product->id])}}">
@@ -150,9 +149,9 @@
                                         </a>
                                     </h5>
                                     <div>
-                                        {{-- <span class="selling-price">₱{{$product->price}}</span> --}}
-                                        <span class="selling-price">₱</span>
-                                        {{-- <span class="original-price">${{$product->original_price}}</span> --}}
+
+                                        <span class="selling-price">₱{{$product->price}}</span>
+                                        <span>{{$product->description}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +168,7 @@
             @endif
         </div>
     </div>
-</div>
+</div> --}}
 
 
 @endsection

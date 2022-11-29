@@ -115,13 +115,13 @@
                           @enderror
                       </div>
 
-                      {{-- <div class="form-group">
+                      <div class="form-group">
                         <label for="price" class="col-form-label">Price</label>
                         <input type="price" name="price" class="form-control" id="price" placeholder="0">
                         @error('description')
                             <div class="text-danger">{{$message}}</div>
                           @enderror
-                      </div> --}}
+                      </div>
 
 
                   <div class="form-group">

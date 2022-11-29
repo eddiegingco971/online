@@ -27,13 +27,14 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        $products = Product::get('category_id', 'id');
-        // $category = Category::find($data['category_id']);
-        // dd($category);
-        $productSizings = Product::get('sizing_id' , 'id');
-        $sizings = Sizing::get();
+        $products = Product::get('category_id');
         $categories = Category::where('created_at', '!=', null)->get();
-        return view('admin.product.create',  compact('categories', 'sizings', 'products'));
+        return view('admin.product.create',  compact('categories', 'products'));
+        // $products = Product::get('category_id', 'id');
+        // $productSizings = Product::get('sizing_id' , 'id');
+        // $sizings = Sizing::get();
+        // $categories = Category::where('created_at', '!=', null)->get();
+        // return view('admin.product.create',  compact('categories', 'sizings', 'products'));
         // $request->validate([
         //     'category_id' => 'required',
         // ]);
@@ -46,7 +47,6 @@ class ProductController extends Controller
         //     'product_name' => 'required|string',
         //     'quantity' => 'required|numeric',
         //     'category_id'=>'required|',
-        //     'sizing_id' =>'required|numeric',
         //     'price' => 'required|string',
         // ]);
         // $category = Category::find($request->category_id);
@@ -54,6 +54,7 @@ class ProductController extends Controller
         // Product::create([
         //     'product_photo'=> $request->product_photo,
         //     'product_name'=> $request->product_name,
+
         //     'quantity'=> $request->quantity,
         //     'price'=> $request->price,
         // ]);
@@ -71,7 +72,7 @@ class ProductController extends Controller
     {
         $products = new Product;
         $products->product_name = $request->input('product_name');
-        $products->sizing_id = $request->input('sizing_id');
+        $products->price = $request->input('price');
         $products->description = $request->input('description');
         $products->category_id = $request->input('category_id');
         $products->status = $request->input('status');
@@ -79,7 +80,7 @@ class ProductController extends Controller
         $request->validate([
             'product_photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg,jfif,webp|max:2048',
             'product_name' => 'required|string|max:255',
-            'sizing_id' => 'required',
+            'price' => 'required',
             'description'=>'required|string|max:255',
             'category_id'=> 'required',
             'status'=> 'required'
@@ -135,7 +136,7 @@ class ProductController extends Controller
      public function update(Request $request, $id){
         $products = Product::find($id);
         $products->product_name = $request->input('product_name');
-        $products->sizing_id = $request->input('sizing_id');
+        $products->price = $request->input('price');
         $products->description = $request->input('description');
         $products->category_id = $request->input('category_id');
         $products->status = $request->input('status');
