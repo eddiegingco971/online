@@ -118,5 +118,58 @@
 
 </div><!-- /.container --> --}}
 
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Products</h4>
+                <div class="underline mb-4"></div>
+            </div>
+
+            @if($products)
+            <div class="col-md-3">
+                <div class="owl-carousel owl-theme four-carousel">
+                    @foreach ($products as $product)
+                        <div class="item">
+                            <div class="product-card">
+                                <div class="product-card-img">
+                                    <label class="stock bg-danger">New</label>
+
+                                    @if ($product->product_photo)
+                                    <a href="{{url('select', ['product'=>$product->id])}}">
+                                        <img src="{{asset('dist/img/product/'.$product->product_photo)}}" alt="{{ $product->product_name }}">
+                                    </a>
+                                    @endif
+                                </div>
+                                <div class="product-card-body">
+                                    {{-- <p class="product-brand">{{ $product->brand }}</p> --}}
+                                     <p class="product-brand"></p>
+                                    <h5 class="product-name">
+                                        <a href="{{url('select', ['product'=>$product->id])}}">
+                                                {{$product->product_name}}
+                                        </a>
+                                    </h5>
+                                    <div>
+                                        {{-- <span class="selling-price">₱{{$product->price}}</span> --}}
+                                        <span class="selling-price">₱</span>
+                                        {{-- <span class="original-price">${{$product->original_price}}</span> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @else
+            <div class="col-md-12">
+                <div class="p-2">
+                    <h4>No Products Available</h4>
+                </div>
+            </div>
+            @endif
+        </div>
+    </div>
+</div>
+
 
 @endsection

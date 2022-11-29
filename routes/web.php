@@ -45,10 +45,10 @@ Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['auth', 'verified']], function (){
 
-Route::get('/profile', [ProfileController::class, 'profileSetting']);
-Route::post('/profile-create', [ProfileController::class, 'store']);
-Route::get('/edit-profile/{id}', [ProfileController::class, 'edit']);
-Route::put('/update-profile/{id}', [ProfileController::class, 'update']);
+Route::get('/profile', [UserController::class, 'setting']);
+// Route::post('/profile-create', [ProfileController::class, 'store']);
+Route::get('/edit-profile/{id}', [UserController::class, 'edit']);
+Route::put('/update-profile/{id}', [UserController::class, 'update']);
 
 Route::group(['middleware' => ['auth', 'admin']], function (){
     Route::get('/home', [HomeController::class, 'index'])->name('home');

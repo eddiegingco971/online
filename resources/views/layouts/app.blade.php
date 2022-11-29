@@ -9,7 +9,7 @@
     <title>Mac Kaon FoodHub</title>
 
 <link rel="stylesheet" href="{{asset('/plugins')}}/fontawesome-free/css/all.min.css">
-{{-- <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/"> --}}
+<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
 <link rel="stylesheet" href="{{asset('/base')}}/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{asset('/base')}}/css/bootstrap.bundle.min.css">
 <link rel="stylesheet" href="{{asset('/base')}}/css/custom.css">
@@ -65,6 +65,7 @@
     @include('layouts.footer')
 
     <script src="{{asset('/base')}}/js/jquery.min.js"></script>
+    <script src="{{asset('/plugins')}}/datatables/jquery.dataTables.min.js"></script>
     <script src="{{asset('/base')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('/base')}}/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('/base')}}/js/popper.min.js"></script>
@@ -93,9 +94,6 @@
 <!-- Summernote -->
 <script src="{{asset('/plugins')}}/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars --> --}}
-
-<script src="{{asset('/plugins')}}/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-
 {{-- <script src="{{asset('/plugins')}}/datatables/jquery.dataTables.min.js"></script>
 <script src="{{asset('/plugins')}}/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="{{asset('/plugins')}}/datatables-responsive/js/dataTables.responsive.min.js"></script>

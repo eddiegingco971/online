@@ -20,5 +20,7 @@ class Profile extends Model
         'barangay',
         'phone_number'
     ];
-
+    public function users(){
+        return $this->hasMany(User::class, 'user_id', 'id');
+    }
 }

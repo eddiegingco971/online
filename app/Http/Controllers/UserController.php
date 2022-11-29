@@ -6,7 +6,9 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -45,5 +47,48 @@ class UserController extends Controller
         $users = User::find($id);
         $users->delete();
         return redirect('/user')->with('status', 'User Deleted Successfully!');
+    }
+
+
+    public function setting(){
+        // $users = User::get();
+        $users = User::first();
+        return view('layouts.profiling.index', compact( 'users'));
+    }
+    public function edit($id)
+    {
+        $users = User::find($id);
+        // $users = User::where('created_at', '!=', null)->get();
+        return view('layouts.profiling.edit', compact('users'));
+    }
+
+    public function update(Request $request, $id){
+        $users = User::find($id);
+        // $users->email = $request->input('email');
+        $users->firstname = $request->input('firstname');
+        $users->lastname = $request->input('lastname');
+        $users->age = $request->input('age');
+        $users->gender = $request->input('gender');
+        $users->address = $request->input('address');
+        $users->barangay = $request->input('barangay');
+        $users->phone_number = $request->input('phone_number');
+
+        if($request->hasFile('user_pic')){
+
+          $destination = 'dist/img/user-profile/'.$users->user_pic;
+          if(File::exists($destination)){
+              File::delete($destination);
+          }
+          $file = $request->file('user_pic');
+          $extention = $file->getClientOriginalExtension();
+          $filename = time().'.'. $extention;
+          $file->move('dist/img/product/', $filename);
+          $users->user_pic = $filename;
+
+        }
+        $users->update();
+        // dd($users);
+
+        return redirect('/profile')->with('status', 'Profile Updated Successfully!');
     }
 }

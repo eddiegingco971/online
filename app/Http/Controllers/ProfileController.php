@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\File;
 class ProfileController extends Controller
 {
     public function profileSetting(){
-        $users = User::get();
-        $profiles = DB::table('profiles')->where('user_id', auth()->user()->id)->get();
+        // $users = User::get();
+        $profiles = Profile::with('users')->where('user_id', auth()->user()->id)->get();
         if(Auth::user()->user_type == 'user'){
-            return view('user.user-profile.index', compact('users', 'profiles'));
+            return view('user.user-profile.index', compact( 'profiles'));
         }else{
-            return view('layouts.profiling.index', compact('users', 'profiles'));
+            return view('layouts.profiling.index', compact( 'profiles'));
         }
 
     }

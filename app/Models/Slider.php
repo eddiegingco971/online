@@ -16,4 +16,6 @@ class Slider extends Model
         'button_name',
         'status'
     ];
+
+
 }
