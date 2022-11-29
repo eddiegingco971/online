@@ -46,7 +46,6 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware' => ['auth', 'verified']], function (){
 
 Route::get('/profile', [UserController::class, 'setting']);
-// Route::post('/profile-create', [ProfileController::class, 'store']);
 Route::get('/edit-profile/{id}', [UserController::class, 'edit']);
 Route::put('/update-profile/{id}', [UserController::class, 'update']);
 

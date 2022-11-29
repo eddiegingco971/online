@@ -53,13 +53,24 @@ class UserController extends Controller
     public function setting(){
         // $users = User::get();
         $users = User::first();
-        return view('layouts.profiling.index', compact( 'users'));
+        if(Auth::user()->user_type == 'user'){
+            return view('user.user-profile.index', compact('users'));
+        }else{
+            return view('layouts.profiling.index', compact('users'));
+        }
+
     }
+
     public function edit($id)
     {
         $users = User::find($id);
-        // $users = User::where('created_at', '!=', null)->get();
-        return view('layouts.profiling.edit', compact('users'));
+
+        if(Auth::user()->user_type == 'user'){
+            return view('user.user-profile.edit', compact('users'));
+        }else{
+            return view('layouts.profiling.edit', compact('users'));
+        }
+
     }
 
     public function update(Request $request, $id){
