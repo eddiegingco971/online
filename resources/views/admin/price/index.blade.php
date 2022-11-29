@@ -60,13 +60,13 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-4">
-            @include('admin.sizing.create')
+            @include('admin.price.create')
           </div>
           <div class="col-md-8">
 
             <div class="card elevation-3">
               <div class="card-header">
-                <h3 class="card-title">List of Sizing</h3>
+                <h3 class="card-title">List of price</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -75,19 +75,17 @@
                   <tr>
                     <th>Category Name</th>
                     <th>Category Image</th>
-                    <th>Category Name</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($sizings as $sizing)
+                    @foreach ($prices as $price)
                         <tr>
-                          <td>{{$sizing->categories->category_name}}</td>
-                          <td>{{$sizing->sizing_name}}</td>
-                          <td>{{$sizing->price}}</td>
+                          <td>{{$price->sizes}}</td>
+                          <td>{{$price->price}}</td>
                           <td>
-                            <a href="{{url('edit-sizing/' .$sizing->id)}}" class="btn btn-info btn-sm">Edit</a>
-                            <a href="{{url('delete-sizing/'.$sizing->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{url('edit-price/' .$price->id)}}" class="btn btn-info btn-sm">Edit</a>
+                            <a href="{{url('delete-price/'.$price->id)}}" class="btn btn-danger btn-sm">Delete</a>
                           </td>
                         </tr>
                     @endforeach

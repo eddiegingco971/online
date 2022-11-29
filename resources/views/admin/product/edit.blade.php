@@ -75,6 +75,24 @@
                                 @enderror
                             </div>
 
+                            @php
+                  $prices=DB::table('prices')->get();
+                  @endphp
+                  <div class="form-group">
+                    <label for="price_id" class="col-form-label">Price</label>
+                    <select class="form-select form-control" name="price_id">
+                      <option hidden="true" selected value="{{$products->price_id}}">--Select any Sizing--</option>
+                        @foreach ($prices as $price)
+
+                          <option value="{{$price->id}}">{{$price->sizes}}</option>
+
+                        @endforeach
+                    </select>
+                    @error('price_id')
+                        <div class="text-danger">{{$message}}</div>
+                      @enderror
+                  </div>
+
                             {{-- <div class="form-group">
                                 <label for="sizing_id" class="col-form-label">Sizing</label>
                                 <select class="form-select form-control" name="sizing_id">

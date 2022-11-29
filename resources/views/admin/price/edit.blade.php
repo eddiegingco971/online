@@ -51,45 +51,28 @@
                 <div class="container-fluid">
                       <div class="card elevation-3">
                         <div class="card-header text-center">
-                          <h1>Edit Sizing</h1>
+                          <h1>Edit Price</h1>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                          <form action="{{url('update-sizing/'.$sizings->id)}}" method="POST">
+                          <form action="{{url('update-price/'.$prices->id)}}" method="POST">
                               @csrf
                               @method('PUT')
 
-                              @php
-                              $categories=DB::table('categories')->where('status','active')->get();
-                              @endphp
-
                               <div class="form-group">
-                                <label for="category_id" class="col-form-label">Category</label>
-                                <select class="form-select form-control" type="category_id" name="category_id">
-                                  <option hidden="true" selected value="{{$sizings->category_id}}">--Default Category--</option>
-                                    @foreach ($categories as $category)
-                                      <option value="{{$category->id}}">{{$category->category_name}}</option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                    <div class="text-danger">{{$message}}</div>
-                                  @enderror
-                              </div>
-
-                              <div class="form-group">
-                                <label for="sizing_name" class="col-form-label">Sizing Name</label>
-                                <input type="text" name="sizing_name" class="form-control" id="sizing_name" value="{{$sizings->sizing_name}}">
+                                <label for="sizes" class="col-form-label">Sizes</label>
+                                <input type="text" name="sizes" class="form-control" id="sizes" value="{{$prices->sizes}}">
                               </div>
 
                               <div class="form-group">
                                   <label for="price" id="price">Price</label>
-                                  <input type="price" name="price" class="form-control" value="{{$sizings->price}}">
+                                  <input type="price" name="price" class="form-control" value="{{$prices->price}}">
                               </div>
 
 
 
                             <div class="form-group">
-                              <a type="button" class="btn btn-secondary" href="{{url('/sizing')}}">Cancel</a>
+                              <a type="button" class="btn btn-secondary" href="{{url('/price')}}">Cancel</a>
                               {{-- <button type="submit" class="btn btn-info" style="position: relative; left:78%;">Save</button> --}}
                               <button type="submit" class="btn btn-info">Save</button>
                           </div>

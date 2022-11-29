@@ -12,7 +12,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
-use App\Http\Controllers\SizingController;
+use App\Http\Controllers\PricesController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -75,11 +75,11 @@ Route::group(['middleware' => ['auth', 'admin']], function (){
     Route::get('/delete-category/{id}', [CategoryController::class, 'destroy']);
 
 
-    Route::get('/sizing', [SizingController::class, 'index'])->name('sizing');
-    Route::post('/sizing-create', [SizingController::class, 'store']);
-    Route::get('/edit-sizing/{id}', [SizingController::class, 'edit']);
-    Route::put('/update-sizing/{id}', [SizingController::class, 'update']);
-    Route::get('/delete-sizing/{id}', [SizingController::class, 'destroy']);
+    Route::get('/prices', [PricesController::class, 'index'])->name('prices');
+    Route::post('/prices-create', [PricesController::class, 'store']);
+    Route::get('/edit-prices/{id}', [PricesController::class, 'edit']);
+    Route::put('/update-prices/{id}', [PricesController::class, 'update']);
+    Route::get('/delete-prices/{id}', [PricesController::class, 'destroy']);
 
     Route::get('/fee', [FeeController::class, 'index'])->name('fee');
     Route::post('/fee-create', [FeeController::class, 'store']);
