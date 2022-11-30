@@ -39,7 +39,7 @@
                                 </a>
                             </div>
                             <div class="col-md-2 my-auto">
-                                <label class="price text-dark">₱{{$cart->products->price}}</label>
+                                <label class="price text-dark">₱{{$cart->products->prices->price}}</label>
                             </div>
                             <div class="col-md-3 col-8 my-auto">
                                 <div class="quantity">
@@ -51,9 +51,9 @@
                                 </div>
                             </div>
                             <div class="col-md-2 my-auto  d-none d-sm-none d-mb-block d-lg-block">
-                                <label class="price text-dark">₱{{$cart->products->price*$cart->quantity}}</label>
+                                <label class="price text-dark">₱{{$cart->products->prices->price*$cart->quantity}}</label>
                                 @php
-                                    $total_amount += $cart->products->price*$cart->quantity
+                                    $total_amount += $cart->products->prices->price*$cart->quantity
                                 @endphp
                             </div>
                             <div class="col-md-2 my-auto">

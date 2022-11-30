@@ -35,8 +35,8 @@
                         $prices=DB::table('prices')->all();
                         @endphp --}}
                         <div>
-                            <span class="selling-price">₱{{$product->prices->sizes}}</span>
-                            <input type="hidden" name="price_id" class="form-control" value="{{$product->prices->sizes}}">
+                            <span class="selling-price">₱{{$this->price_id}}</span>
+                            <input type="hidden" name="price_id" class="form-control" value="{{$this->price_id}}">
                             {{-- <span class="original-price">$499</span> --}}
                         </div>
                         <div class="mt-2">

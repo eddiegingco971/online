@@ -28,11 +28,13 @@ class UserCheckout extends Component
         $this->carts = Cart::where('user_id', auth()->user()->id)->get();
 
         foreach ($this->carts as $cart){
-            $this->totalProductAmount += $cart->products->price * $cart->quantity;
+            $this->totalProductAmount += $cart->products->prices->price * $cart->quantity;
         }
         return $this->totalProductAmount;
 
     }
+
+    
     public function render()
     {
         $this->totalProductAmount = $this->totalProductAmount();
