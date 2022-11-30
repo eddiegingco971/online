@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class UserCheckout extends Component
 {
-    public $carts, $totalProductAmount = 0;
+    public $carts, $totalProductAmount = 0,$fee, $deliveryFee, $totalFee;
 
     public $fullname, $email, $phone_number, $address;
 
@@ -33,11 +33,19 @@ class UserCheckout extends Component
         return $this->totalProductAmount;
 
     }
+
+    public function totalFee(){
+        $this->totalFee = $this->totalProductAmount + auth()->user()->fees->price;
+        return $this->totalFee;
+    }
+
     public function render()
     {
         $this->totalProductAmount = $this->totalProductAmount();
+        $this->totalFee = $this->totalFee();
         return view('livewire.user-checkout', [
-            'totalProductAmount' => $this->totalProductAmount
+            'totalProductAmount' => $this->totalProductAmount,
+            'totalFee' => $this->totalFee,
         ]);
     }
 }

@@ -89,7 +89,7 @@
 
     <div class="content">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section class="content-header card">
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
@@ -146,7 +146,7 @@
                       <address>
                         <strong>{{auth()->user()->firstname}} {{auth()->user()->lastname}}</strong><br>
                         {{auth()->user()->address}}<br>
-                        {{auth()->user()->barangay}}<br>
+                        {{auth()->user()->fees->barangay_name}}<br>
                         Phone: {{auth()->user()->phone_number}}<br>
                         Email: {{auth()->user()->email}}
                       </address>
@@ -235,11 +235,11 @@
                           </tr>
                           <tr>
                             <th>Delivery Fee:</th>
-                            <td>₱ </td>
+                            <td>₱ {{auth()->user()->fees->price}}</td>
                           </tr>
                           <tr>
-                            <th>Total:</th>
-                            <td>₱ 265.24</td>
+                            <th>Total Amount:</th>
+                            <td>₱ {{$this->totalFee}}</td>
                           </tr>
                         </table>
                       </div>
