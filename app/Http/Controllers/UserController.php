@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Fee;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -53,10 +54,11 @@ class UserController extends Controller
     public function setting(){
         // $users = User::get();
         $users = User::first();
+        $fees = Fee::get();
         if(Auth::user()->user_type == 'user'){
-            return view('user.user-profile.index', compact('users'));
+            return view('user.user-profile.index', compact('users','fees'));
         }else{
-            return view('layouts.profiling.index', compact('users'));
+            return view('layouts.profiling.index', compact('users', 'fees'));
         }
 
     }
@@ -64,11 +66,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $users = User::find($id);
-
+        $fees = Fee::get();
         if(Auth::user()->user_type == 'user'){
-            return view('user.user-profile.edit', compact('users'));
+            return view('user.user-profile.edit', compact('users', 'fees'));
         }else{
-            return view('layouts.profiling.edit', compact('users'));
+            return view('layouts.profiling.edit', compact('users','fees'));
         }
 
     }
@@ -81,7 +83,7 @@ class UserController extends Controller
         $users->age = $request->input('age');
         $users->gender = $request->input('gender');
         $users->address = $request->input('address');
-        $users->barangay = $request->input('barangay');
+        $users->barangay_id = $request->input('barangay_id');
         $users->phone_number = $request->input('phone_number');
 
         if($request->hasFile('avatar')){

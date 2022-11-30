@@ -14,4 +14,8 @@ class Fee extends Model
         'price',
         'status',
     ];
+
+    public function users(){
+        return $this->belongsTo(User::class, 'barangay_id', 'id');
+    }
 }

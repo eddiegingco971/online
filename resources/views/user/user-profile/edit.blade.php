@@ -127,7 +127,7 @@
 
               <div class="form-group row">
 
-                <label for="inputBarangay" class="col-sm-2 col-form-label">Barangay</label>
+                {{-- <label for="inputBarangay" class="col-sm-2 col-form-label">Barangay</label>
                 <div class="col-sm-4">
                     <select  type="text" name="barangay" class="form-select form-control" id="inputBarangay" >
                         <option hidden="true" value="{{auth()->user()->barangay}}">{{auth()->user()->barangay}}</option>
@@ -152,7 +152,21 @@
                 </div>
                 @error('barangay')
                     <div class="text-danger">{{$message}}</div>
+                @enderror --}}
+
+                <label for="inputBarangay" class="col-sm-2 col-form-label">Barangay</label>
+                <div class="col-sm-4">
+                 <select  type="text" name="barangay_id" class="form-select form-control" id="inputBarangay" >
+                    @foreach ($fees as $fee)
+                        <option value="{{$fee->id}}">{{$fee->barangay_name}}</option>
+                    @endforeach
+                    </select>
+                </div>
+
+                @error('barangay_id')
+                    <div class="text-danger">{{$message}}</div>
                 @enderror
+
 
 
                 <label for="inputPhonenumber" class="col-sm-2 col-form-label">Phone No. </label>

@@ -131,7 +131,8 @@
 
                                 <label for="inputBarangay" class="col-sm-2 col-form-label">Barangay</label>
                                 <div class="col-sm-4">
-                                    <input  type="text" name="barangay" class="form-select form-control" id="inputBarangay" value="{{auth()->user()->barangay}}" readonly>
+                                    {{-- <input  type="text" name="barangay" class="form-select form-control" id="inputBarangay" value="{{auth()->user()->barangay}}" readonly> --}}
+                                    <input  type="text" name="barangay_id" class="form-control" id="inputBarangay" value="{{auth()->user()->fees->barangay_name}}" readonly>
                                 </div>
 
 

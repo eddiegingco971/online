@@ -52,7 +52,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function profiles(){
-        return $this->belongsTo(Profile::class);
+    // public function profiles(){
+    //     return $this->belongsTo(Profile::class);
+    // }
+    public function fees(){
+        return $this->belongsTo(Fee::class, 'barangay_id', 'id');
     }
 }
