@@ -26,7 +26,7 @@
                         </div>
                     </form>
                 </div> --}}
-                <div class="col-md-3 ml-auto">
+                <div class="col-md-4 ml-auto">
                     <ul class="nav justify-content-end">
 
                         @if (Route::has('login'))
@@ -72,7 +72,8 @@
                             @if (Route::has('login'))
                             @auth
                             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-user"></i> {{Auth::user()->firstname}} {{Auth::user()->lastname}}
+                                <img src="{{asset('dist/img/user-profile/'. auth()->user()->avatar)}}" alt="" width="30" height="30" class="rounded-circle">
+                                {{Auth::user()->firstname}} {{Auth::user()->lastname}}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @if (Auth::user()->user_type == 'admin')

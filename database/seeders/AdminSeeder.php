@@ -31,7 +31,8 @@ class AdminSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'password'=> bcrypt('password'),
                 'user_type'=> 'admin',
-                'status'=> 'active'
+                'status'=> 'active',
+                'avatar'=> 'admin.jpg',
             ],
             [
                 'firstname' => 'Mac',
@@ -46,7 +47,8 @@ class AdminSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'password'=> bcrypt('password'),
                 'user_type'=> 'staff',
-                'status'=> 'active'
+                'status'=> 'active',
+                'avatar'=> 'staff.jpg',
             ],
             [
                 'firstname' => 'Mac',
@@ -61,7 +63,8 @@ class AdminSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'password'=> bcrypt('password'),
                 'user_type'=> 'user',
-                'status'=> 'active'
+                'status'=> 'active',
+                'avatar'=> 'user.png',
             ],
 
         ];

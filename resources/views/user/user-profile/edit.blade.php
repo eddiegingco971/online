@@ -40,6 +40,18 @@
                 {{-- <input type="hidden" name="user_id" value="{{auth()->user()->id}} === 'male' ? '/dist/img/male.png' : '/dist/img/female.png' "  > --}}
 
                 <div class="form-group row">
+                    <label for="inputAvatar" class="col-sm-2 col-form-label">Your Avatar</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="avatar" class="form-control" value="{{auth()->user()->avatar}}">
+                        <img src="{{asset('dist/img/user-profile/'.$users->avatar)}}" width="150px" height="100px" alt="Image" style="border-radius: 10%; margin-top: 2px;">
+                    </div>
+                    @error('avatar')
+                        <div class="text-danger">{{$message}}</div>
+                    @enderror
+                  </div>
+
+
+                <div class="form-group row">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                   <div class="col-sm-10">
                       <input type="email" name="email" class="form-control" value="{{auth()->user()->email}}">

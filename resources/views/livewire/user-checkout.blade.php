@@ -122,7 +122,8 @@
                     <div class="col-12">
                       <h4>
                         <i class="fas fa-globe"></i> Mac Kaon FoodHub.
-                        <small class="float-right">Date: {{auth()->user()->created_at}}</small>
+                        {{-- <small class="float-right">Date: {{auth()->user()->created_at}}</small> --}}
+                        <small class="float-right"></small>
                       </h4>
                     </div>
                     <!-- /.col -->
@@ -152,11 +153,11 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4 invoice-col">
-                      <b>Invoice #007612</b><br>
+                      {{-- <b>Invoice #007612</b><br>
                       <br>
                       <b>Order ID:</b> 4F3S8J<br>
                       <b>Payment Due:</b> 2/22/2014<br>
-                      <b>Account:</b> 968-34567
+                      <b>Account:</b> 968-34567 --}}
                     </div>
                     <!-- /.col -->
                   </div>
@@ -250,10 +251,10 @@
                   <!-- this row will not appear when printing -->
                   <div class="row no-print">
                     <div class="col-12">
-                      <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Cash On Delivery
+                      <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> COD
                       </button>
                       <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                        <i class="fas fa-money-bill"></i> Scan Gcash QR code
+                        <i class="fas fa-money-bill"></i> QR Scan
                       </button>
                     </div>
                   </div>

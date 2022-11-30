@@ -38,7 +38,7 @@
                         <div class="text-center">
 
                           <img class="profile-user-img img-fluid img-circle"
-                               src="{{asset('dist/img/user-profile/'. auth()->user()->user_pic)}}"
+                               src="{{asset('dist/img/user-profile/'. auth()->user()->avatar)}}"
                                alt="User profile picture">
 
                         </div>

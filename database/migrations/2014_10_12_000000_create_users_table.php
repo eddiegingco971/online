@@ -29,7 +29,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('user_type',['admin','staff','user'])->default('user');
-            // $table->string('avatar')->default('');
+            $table->string('avatar')->default('user-avatar.jpg');
             $table->enum('status',['active','inactive'])->default('active');
             $table->rememberToken();
             $table->timestamps();

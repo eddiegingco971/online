@@ -84,17 +84,17 @@ class UserController extends Controller
         $users->barangay = $request->input('barangay');
         $users->phone_number = $request->input('phone_number');
 
-        if($request->hasFile('user_pic')){
+        if($request->hasFile('avatar')){
 
-          $destination = 'dist/img/user-profile/'.$users->user_pic;
+          $destination = 'dist/img/user-profile/'.$users->avatar;
           if(File::exists($destination)){
               File::delete($destination);
           }
-          $file = $request->file('user_pic');
+          $file = $request->file('avatar');
           $extention = $file->getClientOriginalExtension();
           $filename = time().'.'. $extention;
-          $file->move('dist/img/product/', $filename);
-          $users->user_pic = $filename;
+          $file->move('dist/img/user-profile/', $filename);
+          $users->avatar = $filename;
 
         }
         $users->update();
