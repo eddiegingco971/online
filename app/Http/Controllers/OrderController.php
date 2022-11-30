@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -43,10 +44,33 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     $orders = new Order;
+    //     $orders->user_id = $request->input('user_id');
+    //     $orders->price = $request->input('price');
+    //     $orders->description = $request->input('description');
+    //     $orders->category_id = $request->input('category_id');
+    //     $orders->status = $request->input('status');
+
+    //     $request->validate([
+    //         'user_id' => 'required',
+    //         'tracking_number' =>  'mac-'.Str::random(10),
+    //         'order_date',
+    //         'total_amount',
+    //         'quantity',
+    //         'payment_method',
+    //         'payment_status',
+    //         'status',
+    //     ]);
+
+
+
+    //     $orders->save();
+
+
+    //     return redirect('/order')->with('status', 'Order Successfully!');
+    // }
 
     /**
      * Display the specified resource.
@@ -54,9 +78,17 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($orderId)
     {
-        //
+        $order = Order::where('user_id',auth()->user()->id)->where('id',$orderId)->first();
+        if($order){
+
+            return view('user.user-order.index', compact('order'));
+
+        }else{
+
+            return redirect()->back()->with('message','No Order Found');
+        }
     }
 
     /**

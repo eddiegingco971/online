@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('tracking_number');
+            $table->string('tracking_no');
             $table->date('order_date');
-            $table->integer('quantity');
-            $table->string('total_amount');
             $table->enum('payment_method',['cod','scan_gcash'])->default('cod');
             $table->enum('payment_status',['paid','unpaid'])->default('unpaid');
             $table->enum('status',['new','process','delivered','cancel'])->default('new');
