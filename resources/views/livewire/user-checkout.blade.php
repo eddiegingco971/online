@@ -145,7 +145,7 @@
                       <address>
                         <strong>{{auth()->user()->firstname}} {{auth()->user()->lastname}}</strong><br>
                         {{auth()->user()->address}}<br>
-                        {{auth()->user()->barangay}}<br>
+                        {{auth()->user()->fees->barangay_name}}<br>
                         Phone: {{auth()->user()->phone_number}}<br>
                         Email: {{auth()->user()->email}}
                       </address>
@@ -234,11 +234,11 @@
                           </tr>
                           <tr>
                             <th>Delivery Fee:</th>
-                            <td>₱ </td>
+                            <td>₱ {{auth()->user()->fees->price}} </td>
                           </tr>
                           <tr>
                             <th>Total:</th>
-                            <td>₱ </td>
+                            <td>₱ {{$this->totalFee}} </td>
                           </tr>
                         </table>
                       </div>

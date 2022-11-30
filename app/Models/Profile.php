@@ -17,10 +17,13 @@ class Profile extends Model
         'age',
         'gender',
         'address',
-        'barangay',
+        'barangay_id',
         'phone_number'
     ];
     public function users(){
         return $this->hasMany(User::class, 'user_id', 'id');
+    }
+    public function fees(){
+        return $this->hasOne(Fee::class, 'barangay_id', 'id');
     }
 }

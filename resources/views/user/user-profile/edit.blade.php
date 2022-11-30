@@ -117,7 +117,18 @@
 
                 <label for="inputBarangay" class="col-sm-2 col-form-label">Barangay</label>
                 <div class="col-sm-4">
-                    <select  type="text" name="barangay" class="form-select form-control" id="inputBarangay" >
+                    @php
+                    $fees=DB::table('fees')->get();
+                    @endphp
+                    <div class="col-sm-6">
+                        <label for="barangay" class="col-sm-6 col-form-label">Barangay</label>
+                        <select name="barangay_id" id="barangay" class="form-select form-control" id="inputBarangay">
+                            <option hidden="true" value="{{auth()->user()->barangay_id}}">{{auth()->user()->fees->barangay_name}}</option>
+                                @foreach ($fees as $fee)
+                                <option value="{{$fee->id}}">{{$fee->barangay_name}}</option>
+                                @endforeach
+                        </select>
+                    {{-- <select  type="text" name="barangay" class="form-select form-control" id="inputBarangay" >
                         <option hidden="true" value="{{auth()->user()->barangay}}">{{auth()->user()->barangay}}</option>
                         <option value="Cabatuan">Cabatuan</option>
                         <option value="Cantubod">Cantubod</option>
@@ -136,9 +147,9 @@
                         <option value="Tabok">Tabok</option>
                         <option value="Taming">Taming</option>
                         <option value="Villa Anunciado">Villa Anunciado</option>
-                       </select>
+                       </select> --}}
                 </div>
-                @error('barangay')
+                @error('barangay_id')
                     <div class="text-danger">{{$message}}</div>
                 @enderror
 

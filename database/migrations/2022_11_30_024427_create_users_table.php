@@ -22,9 +22,10 @@ return new class extends Migration
             $table->date('birthdate');
             $table->enum('gender',['male','female']);
             $table->string('address');
-            $table->enum('barangay',['Cabatuan','Cantubod','Carbon','San Carlos','Concepcion','Dagohoy','Sta. Fe','Hibale',
-            'Magtangtang','San Miguel','Nahud','Sto. Niño','Poblacion','Remedios','Tabok','Taming','Villa Anunciado'
-            ]);
+            $table->unsignedBigInteger('barangay_id');
+            // $table->enum('barangay',['Cabatuan','Cantubod','Carbon','San Carlos','Concepcion','Dagohoy','Sta. Fe','Hibale',
+            // 'Magtangtang','San Miguel','Nahud','Sto. Niño','Poblacion','Remedios','Tabok','Taming','Villa Anunciado'
+            // ]);
             $table->string('phone_number');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -33,6 +34,8 @@ return new class extends Migration
             $table->enum('status',['active','inactive'])->default('active');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('barangay_id')->references('id')->on('fees')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
