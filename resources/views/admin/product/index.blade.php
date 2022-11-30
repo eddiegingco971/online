@@ -81,7 +81,7 @@
                     <th>Product Name</th>
                     <th>Description</th>
                     <th>Category ID</th>
-                    <th>Size</th>
+                    <th>Price</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -96,7 +96,7 @@
                         <td>{{$product->product_name}}</td>
                         <td>{{$product->description}}</td>
                         <td>{{$product->categories->category_name}}</td>
-                        <td>{{$product->prices->sizes}}</td>
+                        <td>{{$product->price}}</td>
                         <td>{{$product->status}}</td>
                         <td>
                           <a href="{{url('edit-product/' .$product->id)}}" class="btn btn-info btn-sm">Edit</a>

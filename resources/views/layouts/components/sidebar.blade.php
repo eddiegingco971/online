@@ -109,12 +109,12 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{url('/prices')}}" class="nav-link active">
               <i class="nav-icon fa fa-balance-scale" aria-hidden="true"></i>
               <p>Pricing Management</p>
             </a>
-          </li>
+          </li> --}}
 
           <li class="nav-item">
             <a href="{{url('/product')}}" class="nav-link active">

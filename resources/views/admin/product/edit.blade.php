@@ -74,7 +74,7 @@
                                   <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
-
+{{--
                             @php
                   $prices=DB::table('prices')->get();
                   @endphp
@@ -90,7 +90,7 @@
                     </select>
                     @error('price_id')
                         <div class="text-danger">{{$message}}</div>
-                      @enderror
+                      @enderror --}}
                   </div>
 
                             {{-- <div class="form-group">
