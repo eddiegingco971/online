@@ -190,8 +190,24 @@
                                 @enderror
                             </div>
 
-
+                            @php
+                            $fees=DB::table('fees')->get();
+                            @endphp
                             <div class="col-sm-6">
+                                <label for="barangay_id" class="col-sm-6 col-form-label">Barangay</label>
+                                <select name="barangay_id" id="barangay_id" class="form-select form-control">
+                                    <option value="">--Select Barangay--</option>
+                                        @foreach ($fees as $fee)
+                                        <option value="{{$fee->id}}">{{$fee->barangay_name}}</option>
+                                        @endforeach
+                                </select>
+                                @error('barangay_id')
+                                    <div class="text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+
+
+                            {{-- <div class="col-sm-6">
                                 <label for="barangay" class="col-sm-6 col-form-label">Barangay</label>
                                 <select  type="text" id="barangay" name="barangay" class="form-select form-control">
                                     <option hidden="true" value="#">--Select Barangay--</option>
@@ -216,7 +232,7 @@
                                 @error('barangay')
                                     <div class="text-danger">{{$message}}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             </div>
 
 

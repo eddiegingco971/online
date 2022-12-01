@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Fee;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -68,7 +69,7 @@ class RegisterController extends Controller
             'birthdate' => ['required', 'date'],
             'gender' => ['required', 'string'],
             'address' => ['required', 'string', 'max:255'],
-            'barangay' => ['required', 'string', 'max:255'],
+            'barangay_id' => ['required:fees'],
             'phone_number' => ['required', 'numeric', 'digits:11'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -90,7 +91,7 @@ class RegisterController extends Controller
             'birthdate' => $data['birthdate'],
             'gender' => $data['gender'],
             'address' => $data['address'],
-            'barangay' => $data['barangay'],
+            'barangay_id' => $data['barangay_id'],
             'phone_number' => $data['phone_number'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
