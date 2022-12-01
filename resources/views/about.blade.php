@@ -77,7 +77,8 @@
 
             <h5 class="fw-normal">Cary Huit</h5>
             <p>Mater Dei College</p>
-            <p><a class="btn btn-primary" href="https://web.facebook.com/cary.huit">Facebook &raquo;</a></p>
+            {{-- <p><a class="btn btn-primary" href="https://web.facebook.com/cary.huit">Facebook &raquo;</a></p> --}}
+            <p><a class="btn btn-primary" href="https://web.facebook.com/yanyan.loresca.5">Facebook &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-md-2 col-10">
             <img class="bd-placeholder-img rounded-circle mt-2" width="140" height="140" src="{{asset('/dist/img/developers/edwin.jpg')}}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
@@ -91,7 +92,8 @@
 
             <h5 class="fw-normal">Adrian Loresca</h5>
             <p>Mater Dei College</p>
-            <p><a class="btn btn-primary" href="https://web.facebook.com/yanyan.loresca.5">Facebook &raquo;</a></p>
+            {{-- <p><a class="btn btn-primary" href="https://web.facebook.com/yanyan.loresca.5">Facebook &raquo;</a></p> --}}
+            <p><a class="btn btn-primary" href="https://web.facebook.com/cary.huit">Facebook &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
 
         </div><!-- /.row -->

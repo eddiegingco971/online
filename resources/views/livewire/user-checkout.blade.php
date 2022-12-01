@@ -143,13 +143,49 @@
                     <!-- /.col -->
                     <div class="col-sm-4 invoice-col">
                       To
-                      <address>
+                      {{-- <address>
                         <strong>{{auth()->user()->firstname}} {{auth()->user()->lastname}}</strong><br>
                         {{auth()->user()->address}}<br>
                         {{auth()->user()->fees->barangay_name}}<br>
                         Phone: {{auth()->user()->phone_number}}<br>
                         Email: {{auth()->user()->email}}
-                      </address>
+                      </address> --}}
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Firstname</label>
+                            <input type="text" wire:model.defer="firstname" id="firstname" class="form-control" placeholder="Enter Full Name" readonly/>
+                            @error('firstname') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Lastname</label>
+                            <input type="text" wire:model.defer="lastname" id="lastname" class="form-control" placeholder="Enter Full Name" readonly/>
+                            @error('lastname') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Email Address</label>
+                            <input type="email" wire:model.defer="email" id="email" class="form-control" placeholder="Enter Email Address" />
+                            @error('email') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Phone Number</label>
+                            <input type="number" wire:model.defer="phone_number" id="phone_number" class="form-control" placeholder="09xxxxxxxxx" />
+                            @error('phone_number') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+
+                        @php
+                            $fees = DB::table('fees')->where('status','active')->get();
+                        @endphp
+                        <div class="col-md-12 mb-3">
+                            <label>Address</label>
+                            {{-- <input wire:model.defer="address" id="address" class="form-control"> --}}
+                            <select wire:model.defer="address" id="address" class="form-control form-select">
+                                {{-- <option value="{{$fee->id}}">{{$fee->barangay_name}}</option> --}}
+                                @foreach ($fees as $fee)
+                                    <option value="{{$fee->id}}">{{$fee->barangay_name}}</option>
+                                @endforeach
+                            </select>
+                            @error('address') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4 invoice-col">
@@ -251,11 +287,27 @@
                   <!-- this row will not appear when printing -->
                   <div class="row no-print">
                     <div class="col-12">
-                      <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> COD
+                        {{-- <button type="button" wire:loading.attr="disabled" wire:click="codOrder" class="btn btn-primary">
+                            <span wire:loading.remove wire:target="codOrder">
+                                Place Order (Cash on Delivery)
+                            </span>
+                        </button> --}}
+
+                      <button type="button" class="btn btn-success float-right" wire:loading.attr="enabled" wire:click="codOrder"><i class="far fa-credit-card"></i>
+                        <span wire:loading.remove wire:target="codOrder">
+                            (Cash on Delivery)
+                        </span>
                       </button>
-                      <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+
+                      <button type="button" class="btn btn-success float-right" wire:loading.attr="disabled" wire:click="qrcode"><i class="far fa-credit-card"></i>
+                        <span wire:loading.remove wire:target="qrcode">
+                          (Scan QR Code Delivery)
+                        </span>
+                      </button>
+
+                      {{-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;"wire:loading.attr="disabled" wire:target="scan_gcash">
                         <i class="fas fa-money-bill"></i> QR Scan
-                      </button>
+                      </button> --}}
                     </div>
                   </div>
                 </div>
