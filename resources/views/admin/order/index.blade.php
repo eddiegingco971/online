@@ -77,13 +77,14 @@
                   <thead>
                   <tr>
                     <th>Order ID#</th>
+                    {{-- <th>User ID#</th> --}}
+                    <th>Customer Name</th>
                     <th>Track No</th>
-                    <th>User ID#</th>
-                    <th>Quantity</th>
+                    {{-- <th>Quantity</th> --}}
                     <th>Total Amount</th>
                     <th>Payment Method</th>
                     <th>Payment Status</th>
-                    <th>Status</th>
+                    {{-- <th>Status</th> --}}
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -92,14 +93,16 @@
                     @foreach ($orders as $order)
                       <tr>
                         <td>{{$order->id}}</td>
-                        <td>{{$order->user_id}}</td>
+                        {{-- <td>{{$order->user_id}}</td> --}}
+                        <td>{{$order->users->firstname}} {{$order->users->lastname}}</td>
                         <td>{{$order->tracking_number}}</td>
                         {{-- <td>{{$order->quantity}}</td> --}}
                         <td>{{$order->total_amount}}</td>
                         <td>{{$order->payment_method}}</td>
                         <td>{{$order->payment_status}}</td>
-                        <td>{{$order->status}}</td>
+                        {{-- <td>{{$order->status}}</td> --}}
                         <td>
+                          <a href="{{url('edit-order/'.$order->id)}}" class="btn btn-success btn-sm">Edit</a>
                           <a href="{{url('delete-order/'.$order->id)}}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                       </tr>

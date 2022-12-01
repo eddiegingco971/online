@@ -32,9 +32,10 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Order ID#</th>
-                  <th>User ID#</th>
-                  <th>Order Date</th>
+                  {{-- <th>Order ID#</th>
+                  <th>User ID#</th> --}}
+                  <th>Tracking Number</th>
+                  {{-- <th>Order Date</th> --}}
                   {{-- <th>Quantity</th> --}}
                   <th>Total Amount</th>
                   <th>Payment Method</th>
@@ -47,16 +48,17 @@
 
                   @foreach ($orders as $order)
                     <tr>
-                      <td>{{$order->id}}</td>
-                      <td>{{$order->user_id}}</td>
-                      <td>{{$order->order_date}}</td>
+                      {{-- <td>{{$order->id}}</td>
+                      <td>{{$order->user_id}}</td> --}}
+                      <td>{{$order->tracking_number}}</td>
+                      {{-- <td>{{$order->order_date}}</td> --}}
                       {{-- <td>{{$order->quantity}}</td> --}}
                       <td>{{$order->total_amount}}</td>
                       <td>{{$order->payment_method}}</td>
                       <td>{{$order->payment_status}}</td>
                       <td>{{$order->status}}</td>
                       <td>
-                        <a href="{{url('delete-order/'.$order->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="{{url('delete-order/'.$order->id)}}" class="btn btn-success btn-sm">View</a>
                       </td>
                     </tr>
                   @endforeach
