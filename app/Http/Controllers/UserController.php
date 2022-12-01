@@ -55,7 +55,7 @@ class UserController extends Controller
     public function setting(){
         // $users = User::get();
         $users = User::first();
-        $fees = Fee::get();
+        $fees = Fee::where('status', 'active')->get();
         if(Auth::user()->user_type == 'user'){
             return view('user.user-profile.index', compact('users','fees'));
         }else{
@@ -67,7 +67,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $users = User::find($id);
-        $fees = Fee::get();
+        $fees = Fee::where('status', 'active')->get();
         if(Auth::user()->user_type == 'user'){
             return view('user.user-profile.edit', compact('users', 'fees'));
         }else{

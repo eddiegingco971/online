@@ -191,7 +191,7 @@
                             </div>
 
                             @php
-                            $fees=DB::table('fees')->get();
+                            $fees=DB::table('fees')->where('status', 'active')->get();
                             @endphp
                             <div class="col-sm-6">
                                 <label for="barangay_id" class="col-sm-6 col-form-label">Barangay</label>
