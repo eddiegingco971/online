@@ -89,7 +89,7 @@
                     @foreach ($users as $user)
                       <tr>
                         <td>{{$user->id}}</td>
-                        <td class="text-center"><img src="{{asset('dist/img/'.$user->profile_image)}}" width="100px" height="100px" alt="Image" style="border-radius: 10%"></td>
+                        <td class="text-center"><img src="{{asset('dist/img/user-profile/'.$user->avatar)}}" width="50px" height="50px" alt="Image" style="border-radius: 10%"></td>
                         <td>{{$user->firstname}} {{$user->lastname}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->user_type}}</td>

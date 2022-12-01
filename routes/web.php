@@ -38,6 +38,7 @@ Route::get('/collections', [SiteController::class, 'collectionCategory']);
 Route::get('/collections/{cat_name}', [SiteController::class, 'specificProduct']);
 Route::get('/select/{product}', [SiteController::class, 'viewProduct']);
 Route::get('/about', [SiteController::class, 'about']);
+Route::post('/change-password', [UserController::class, 'changePassword']);
 
 
 

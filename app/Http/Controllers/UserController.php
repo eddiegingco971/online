@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -25,7 +26,7 @@ class UserController extends Controller
      */
     public function list()
     {
-        $users = User::get();
+        $users = User::where('user_type', 'user')->get();
         $carts = Cart::get();
         return view('admin.user.userList', compact('users', 'carts'));
     }
@@ -103,5 +104,36 @@ class UserController extends Controller
         // dd($users);
 
         return redirect('/profile')->with('status', 'Profile Updated Successfully!');
+    }
+
+    // public function passwordCreate()
+    // {
+    //     if(Auth::user()->user_type == 'user'){
+    //     return view('user.user-profile.change-password');
+    //     }else{
+    //         return view('layouts.profiling.change-password');
+    //     }
+    // }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required','string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
+        ]);
+
+        $currentPasswordStatus = Hash::check($request->current_password, auth()->user()->password);
+        if($currentPasswordStatus){
+
+            User::findOrFail(Auth::user()->id)->update([
+                'password' => Hash::make($request->password),
+            ]);
+
+            return redirect('/profile')->with('status','Password Updated Successfully');
+
+        }else{
+
+            return redirect('/profile')->with('error','Current Password does not match with Old Password');
+        }
     }
 }

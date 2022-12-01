@@ -91,7 +91,7 @@
                     @error('price_id')
                         <div class="text-danger">{{$message}}</div>
                       @enderror --}}
-                  </div>
+                  {{-- </div> --}}
 
                             {{-- <div class="form-group">
                                 <label for="sizing_id" class="col-form-label">Sizing</label>
