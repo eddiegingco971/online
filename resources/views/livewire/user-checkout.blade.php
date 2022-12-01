@@ -122,7 +122,7 @@
                     <div class="col-12">
                       <h4>
                         <i class="fas fa-globe"></i> Mac Kaon FoodHub.
-                        {{-- <small class="float-right">Date: {{auth()->user()->created_at}}</small> --}}
+                        <small class="float-right">Date: {{auth()->user()->created_at}}</small>
                         <small class="float-right"></small>
                       </h4>
                     </div>
@@ -143,15 +143,15 @@
                     <!-- /.col -->
                     <div class="col-sm-4 invoice-col">
                       To
-                      {{-- <address>
+                      <address>
                         <strong>{{auth()->user()->firstname}} {{auth()->user()->lastname}}</strong><br>
-                        {{auth()->user()->address}}<br>
-                        {{auth()->user()->fees->barangay_name}}<br>
-                        Phone: {{auth()->user()->phone_number}}<br>
+                        {{-- {{auth()->user()->address}}<br> --}}
+                        {{-- {{auth()->user()->fees->barangay_name}}<br>
+                        Phone: {{auth()->user()->phone_number}}<br> --}}
                         Email: {{auth()->user()->email}}
-                      </address> --}}
+                      </address>
                       <div class="row">
-                        <div class="col-md-6 mb-3">
+                        {{-- <div class="col-md-6 mb-3">
                             <label>Firstname</label>
                             <input type="text" wire:model.defer="firstname" id="firstname" class="form-control" placeholder="Enter Full Name" readonly/>
                             @error('firstname') <small class="text-danger">{{ $message }}</small> @enderror
@@ -163,27 +163,26 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Email Address</label>
-                            <input type="email" wire:model.defer="email" id="email" class="form-control" placeholder="Enter Email Address" />
+                            <input type="email" wire:model.defer="email" id="email" class="form-control" placeholder="Enter Email Address" readonly/>
                             @error('email') <small class="text-danger">{{ $message }}</small> @enderror
-                        </div>
+                        </div> --}}
                         <div class="col-md-6 mb-3">
                             <label>Phone Number</label>
                             <input type="number" wire:model.defer="phone_number" id="phone_number" class="form-control" placeholder="09xxxxxxxxx" />
                             @error('phone_number') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
-                        @php
+                        {{-- @php
                             $fees = DB::table('fees')->where('status','active')->get();
-                        @endphp
-                        <div class="col-md-12 mb-3">
+                        @endphp --}}
+                        <div class="col-md-6 mb-3">
                             <label>Address</label>
-                            {{-- <input wire:model.defer="address" id="address" class="form-control"> --}}
-                            <select wire:model.defer="address" id="address" class="form-control form-select">
-                                {{-- <option value="{{$fee->id}}">{{$fee->barangay_name}}</option> --}}
+                            <textarea wire:model.defer="address" id="address" class="form-control" rows="2"></textarea>
+                            {{-- <select wire:model.defer="address" id="address" class="form-control form-select">
                                 @foreach ($fees as $fee)
                                     <option value="{{$fee->id}}">{{$fee->barangay_name}}</option>
                                 @endforeach
-                            </select>
+                            </select> --}}
                             @error('address') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
@@ -200,52 +199,42 @@
                   <!-- /.row -->
 
                   <!-- Table row -->
-                  {{-- <div class="row">
+                  <div class="row">
                     <div class="col-12 table-responsive">
                       <table class="table table-striped">
                         <thead>
                         <tr>
                           <th>Qty</th>
                           <th>Product</th>
-                          <th>Serial #</th>
+                          {{-- <th>Serial #</th> --}}
                           <th>Description</th>
                           <th>Subtotal</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Call of Duty</td>
-                          <td>455-981-221</td>
-                          <td>El snort testosterone trophy driving gloves handsome</td>
-                          <td>$64.50</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Need for Speed IV</td>
-                          <td>247-925-726</td>
-                          <td>Wes Anderson umami biodiesel</td>
-                          <td>$50.00</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Monsters DVD</td>
-                          <td>735-845-642</td>
-                          <td>Terry Richardson helvetica tousled street art master</td>
-                          <td>$10.70</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Grown Ups Blue Ray</td>
-                          <td>422-568-642</td>
-                          <td>Tousled lomo letterpress</td>
-                          <td>$25.99</td>
-                        </tr>
+                            @forelse ($carts as $cart)
+                            <tr>
+                                <td>{{$cart->quantity}}</td>
+                                <td>
+                                    <img src="{{asset('dist/img/product/'.$cart->products->product_photo)}}" width="50px" height="50px" alt="Image" style="border-radius: 10%">
+                                    {{$cart->products->product_name}}</td>
+                                {{-- <td>455-981-221</td> --}}
+                                <td>{{$cart->products->description}}</td>
+                                <td>{{$cart->products->price}}</td>
+                              </tr>
+                            @empty
+                            <tr>
+                                <td>No product</td>
+
+                              </tr>
+
+                            @endforelse
+
                         </tbody>
                       </table>
                     </div>
                     <!-- /.col -->
-                  </div> --}}
+                  </div>
                   <!-- /.row -->
 
                   <div class="row">

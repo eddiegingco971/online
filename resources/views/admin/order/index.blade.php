@@ -80,11 +80,11 @@
                     {{-- <th>User ID#</th> --}}
                     <th>Customer Name</th>
                     <th>Track No</th>
-                    {{-- <th>Quantity</th> --}}
+                    <th>Products</th>
                     <th>Total Amount</th>
                     <th>Payment Method</th>
                     <th>Payment Status</th>
-                    {{-- <th>Status</th> --}}
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -96,11 +96,12 @@
                         {{-- <td>{{$order->user_id}}</td> --}}
                         <td>{{$order->users->firstname}} {{$order->users->lastname}}</td>
                         <td>{{$order->tracking_number}}</td>
+                         <td>{{$order->products->description}} {{$order->products->product_name}} {{$order->quantity}}x</td>
                         {{-- <td>{{$order->quantity}}</td> --}}
                         <td>{{$order->total_amount}}</td>
                         <td>{{$order->payment_method}}</td>
                         <td>{{$order->payment_status}}</td>
-                        {{-- <td>{{$order->status}}</td> --}}
+                        <td>{{$order->status}}</td>
                         <td>
                           <a href="{{url('edit-order/'.$order->id)}}" class="btn btn-success btn-sm">Edit</a>
                           <a href="{{url('delete-order/'.$order->id)}}" class="btn btn-danger btn-sm">Delete</a>

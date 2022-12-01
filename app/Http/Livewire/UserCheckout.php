@@ -18,9 +18,9 @@ class UserCheckout extends Component
 
     public function rules(){
         return [
-            'firstname' =>'required',
-            'lastname' =>'required',
-            'email' =>'required|email',
+            // 'firstname' =>'required',
+            // 'lastname' =>'required',
+            // 'email' =>'required|email',
             'phone_number' =>'required|digits:11',
             'address' =>'required',
         ];
@@ -33,6 +33,7 @@ class UserCheckout extends Component
 
         $order = Order::create([
             'user_id'=> auth()->user()->id,
+            'product_id'=> $cart->product_id,
             'tracking_number' => 'mac'.Str::random(5),
             'order_date' => Carbon::now()->format('m-d-y'),
             'total_amount' => $this->totalFee,
@@ -109,11 +110,11 @@ class UserCheckout extends Component
 
     public function render()
     {
-        $this->firstname = auth()->user()->firstname;
-        $this->lastname =auth()->user()->lastname;
-        $this->email = auth()->user()->email;
+        // $this->firstname = auth()->user()->firstname;
+        // $this->lastname =auth()->user()->lastname;
+        // $this->email = auth()->user()->email;
         $this->phone_number = auth()->user()->phone_number;
-        $this->address = auth()->user()->fees->barangay_name;
+        $this->address = auth()->user()->address;
 
 
         $this->totalProductAmount = $this->totalProductAmount();

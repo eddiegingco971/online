@@ -15,14 +15,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::get();
+        $orders = Order::where('payment_status', 'unpaid')->get();
         $categories = Category::where('created_at', '!=', null)->get();
         return view('admin.order.index', compact('orders', 'categories'));
     }
 
     public function orderDelivered()
     {
-        $orders = Order::get();
+        $orders = Order::where('status', 'delivered')->where('payment_status', 'paid')->get();
         $categories = Category::where('created_at', '!=', null)->get();
         return view('admin.order.delivered', compact('orders', 'categories'));
     }
