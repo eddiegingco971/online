@@ -40,7 +40,6 @@
                   <th>Description</th>
                   <th>Payment Method</th>
                   <th>Price</th>
-
                 </tr>
                 </thead>
                 <tbody>
