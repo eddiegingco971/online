@@ -45,109 +45,98 @@
     @endif --}}
 
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    {{-- <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-3">
             <h1>Order Management</h1>
           </div>
-          {{-- <div class="col-sm-6">
+          <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">DataTables</li>
             </ol>
-          </div> --}}
+          </div>
         </div>
       </div><!-- /.container-fluid -->
-    </section>
+    </section> --}}
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
 
-            <div class="card elevation-3">
-              <div class="card-header">
-                <h3 class="card-title">List of Order</h3>
+              <div class="card elevation-3 mt-3">
+                <div class="card-header">
+                  <h3 class="card-title">View User Order</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      {{-- <th>Order ID#</th>
+                      <th>User ID#</th> --}}
+                      <th>Product</th>
+                      {{-- <th>Order Date</th> --}}
+                      <th>Quantity</th>
+                      <th>Description</th>
+                      <th>Total Amount</th>
+                      <th>Payment Method</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($orders as $order)
+                        <tr>
+                          <td><img src="{{asset('dist/img/product/'. $order->products->product_photo)}}" width="100px" height="100px" alt="Image" style="border-radius: 10%"> {{$order->products->product_name}}</td>
+                          <td>{{$order->quantity}}</td>
+                          <td>{{$order->products->description}}</td>
+                          <td>{{$order->payment_method}}</td>
+                          <td>{{$order->products->price}}</td>
+                          {{-- <td>{{$order->status}}</td> --}}
+                        </tr>
+                      @endforeach
+
+                    </tbody>
+                    {{-- <tfoot>
+
+                          <tr>
+                          <td>{{$order->id}}</td>
+                          <td>{{$order->user_id}}</td>
+                          <td>{{$order->tracking_number}}</td>
+                          <td>{{$order->order_date}}</td>
+                          <td>{{$order->quantity}}</td>
+                          <td>{{$order->total_amount}}</td>
+                          <td>{{$order->payment_method}}</td>
+                          <td>{{$order->payment_status}}</td>
+                          <td>{{$order->status}}</td>
+                        </tr>
+                    <tr>
+                      <th>Rendering engine</th>
+                      <th>Browser</th>
+                      <th>Platform(s)</th>
+                      <th>Engine version</th>
+                      <th>CSS grade</th>
+                    </tr>
+                    </tfoot> --}}
+                  </table>
+                  <a href="{{url('/staff')}}">
+                    <button class="btn btn-sm btn-danger d-flex justify-content-end float-right">
+                       <i class="fa fa-arrow-left px-1 mt-1" aria-hidden="true"></i>  Back
+                    </button>
+                  </a>
+                </div>
+                <!-- /.card-body -->
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Order ID#</th>
-                    {{-- <th>User ID#</th> --}}
-                    <th>Customer Name</th>
-                    <th>Track No</th>
-                    {{-- <th>Products</th>
-                    <th>Quantity</th> --}}
-                    <th>Total Amount</th>
-                    <th>Payment Method</th>
-                    <th>Payment Status</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                    {{-- <th>Remove</th> --}}
-                  </tr>
-                  </thead>
-                  <tbody>
-
-                    @foreach ($orderItems as $order)
-                    {{-- <td>{{$order->quantity}}</td> --}}
-                     {{-- <td>{{$order->user_id}}</td> --}}
-                      <tr>
-                        <td>{{$order->id}}</td>
-
-                        <td>{{$order->users->firstname}} {{$order->users->lastname}}</td>
-                        {{-- <td>{{$order->tracking_number}}</td> --}}
-                        <td>{{$order->orders->tracking_number}}</td>
-                        {{-- <td>{{$order->products->description}} {{$order->products->product_name}}</td>
-                        <td>{{$order->orders->quantity}}</td> --}}
-                        {{-- <td>{{$order->total_amount}}</td>
-                        <td>{{$order->payment_method}}</td>
-                        <td>{{$order->payment_status}}</td> --}}
-                        {{-- <td>{{$order->status}}</td> --}}
-                        {{-- <td>{{$order->orders->status}}</td> --}}
-
-
-                        <td>{{$order->orders->total_amount}}</td>
-                        <td>{{$order->orders->payment_method}}</td>
-                        <td>{{$order->orders->payment_status}}</td>
-                        <td>{{$order->orders->status}}</td>
-
-                        <td>
-                          <a href="{{url('viewOrder/'.$order->id)}}" class="btn btn-secondary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                          <a href="{{url('edit-order/'.$order->id)}}" class="btn btn-success btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                          {{-- <a href="{{url('delete-order/'.$order->id)}}" class="btn btn-danger btn-sm">Delete</a> --}}
-                        </td>
-                        {{-- <td>
-                            <a href="{{url('delete-order/'.$order->id)}}" class="btn btn-danger btn-sm">Delete</a>
-                        </td> --}}
-                      </tr>
-                    @endforeach
-
-                  </tbody>
-                  {{-- <tfoot>
-                  <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                  </tr>
-                  </tfoot> --}}
-                </table>
-              </div>
-              <!-- /.card-body -->
+              <!-- /.card -->
             </div>
-            <!-- /.card -->
+            <!-- /.col -->
           </div>
-          <!-- /.col -->
+          <!-- /.row -->
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </section>
+        <!-- /.container-fluid -->
+      </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -187,6 +176,7 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
+      "paging": false,"info": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({

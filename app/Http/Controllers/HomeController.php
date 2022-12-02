@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,6 +44,13 @@ class HomeController extends Controller
     {
         $carts = Cart::get();
         return view('admin.cart.cartList', compact('carts'));
+    }
+
+    public function show($id){
+
+        $orders = Order::where('tracking_number', '!=', null)->get();
+
+        return view('admin.order.viewOrder', compact('orders'));
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\OrderItems;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\User;
@@ -19,12 +20,13 @@ class SiteController extends Controller
         $sliders = Slider::where('status', 'active')->get();
         $orders = DB::table('orders')->where('quantity')->get();
         $categories = Category::where('status','active')->get();
+        $orderItems = OrderItems::get();
         // $carts = DB::table('carts')->where('status', 'new')->count();
         // $carts = User::where('user_id', 'id')->get()->count();
         // $carts = DB::table('carts')->where('user_id', 'id')->get();
         // $carts = DB::table('carts')->where('user_id', 'id')->get()->count();
 
-        return view('base', compact('sliders', 'orders', 'users', 'categories', 'products'));
+        return view('base', compact('sliders', 'orders', 'users', 'categories', 'products', 'orderItems'));
     }
 
     // public function allProduct(){

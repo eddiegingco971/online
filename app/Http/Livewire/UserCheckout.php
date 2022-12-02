@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\OrderItems;
 use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -42,10 +43,17 @@ class UserCheckout extends Component
             'payment_status'=>'unpaid',
             'status'=> 'new',
         ]);
-
     }
 
-        return $order;
+        $orderItem = OrderItems::create([
+            'order_id'=> $order->id,
+            'user_id'=> auth()->user()->id,
+            'product_id'=> $cart->product_id,
+            // 'cart_id'=> $cart->id,
+        ]);
+
+
+        return $orderItem;
 
     }
 

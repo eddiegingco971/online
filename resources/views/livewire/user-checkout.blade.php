@@ -86,7 +86,7 @@
             </div>
         </div>
     </div> --}}
-
+    @if ($this->totalProductAmount != '0')
     <div class="content">
         <!-- Content Header (Page header) -->
         <section class="content-header card">
@@ -306,7 +306,29 @@
           </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-      </div>
+    </div>
+    @else
+
+    <div class="py-3 pyt-md-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 card text-center">
+                    <h1><img src="{{asset('/dist')}}/img/Logo.png" alt="" width="100px" height="100px" class="rounded-circle"></h1>
+                    <h4>There is no product on added into your cart!</h4>
+                    <h1>
+                        <a href="{{url('/collections')}}">
+                            <button class="btn btn-sm btn-warning float-center">
+                               <i class="fa fa-cart-plus px-1 mt-1" aria-hidden="true"></i> Order Now
+                            </button>
+                        </a>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @endif
+
 
 
 </div>

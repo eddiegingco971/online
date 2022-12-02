@@ -99,8 +99,11 @@
                                             @csrf
                                         </form>
                                 @else
+                                @php
+                                    $orderItems = DB::table('order_items')->count();
+                                @endphp
                                     <li><a class="dropdown-item" href="{{url('/profile')}}"><i class="fa fa-user"></i> Profile</a></li>
-                                        <li><a class="dropdown-item" href="{{url('/user-order')}}"><i class="fa fa-list"></i> My Orders<span class="text-danger font-weight-bold"> {{$orders}}</span></a></li>
+                                        <li><a class="dropdown-item" href="{{url('/user-order')}}"><i class="fa fa-list"></i> My Orders<span class="text-danger font-weight-bold"> {{$orderItems}}</span></a></li>
                                         <li><a class="dropdown-item" href="{{url('/user-cart')}}"><i class="fa fa-shopping-cart"></i> My Cart<span class="text-danger font-weight-bold"> {{$carts}}</span></a></li>
                                         <li><a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

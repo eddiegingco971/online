@@ -55,7 +55,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                          <form action="{{url('update-order/'.$orders->id)}}" method="POST" enctype="multipart/form-data">
+                          <form action="{{url('update-order/'.$orders->users->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 

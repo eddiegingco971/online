@@ -93,7 +93,8 @@ Route::group(['middleware' => ['auth', 'admin']], function (){
     Route::get('/edit-order/{id}', [OrderController::class, 'edit']);
     Route::put('/update-order/{id}', [OrderController::class, 'update']);
     Route::get('/delivered', [OrderController::class, 'orderDelivered']);
-    Route::get('/delete-order/{id}', [OrderController::class, 'destroy']);
+    // Route::get('/delete-order/{id}', [OrderController::class, 'destroy']);
+    Route::get('/viewOrder/{id}', [HomeController::class, 'show']);
 
     Route::get('/cart-list', [HomeController::class, 'cartList']);
 
@@ -110,6 +111,7 @@ Route::group(['middleware' => ['auth', 'admin']], function (){
 Route::group(['middleware' => ['auth', 'staff']], function (){
     Route::get('/staff', [StaffController::class, 'index'])->name('staff');
     Route::get('/staffdelivered', [StaffController::class, 'orderDelivered']);
+    Route::get('/viewOrders/{id}', [StaffController::class, 'show']);
 
 });
 
@@ -118,6 +120,7 @@ Route::group(['middleware' => ['auth', 'user']], function (){
     Route::get('/checkout', [CheckoutController::class, 'index']);
 
     Route::get('/user-order', [UserController::class, 'userOrder']);
+    Route::get('/view-order/{id}', [UserController::class, 'show']);
 
     Route::post('/cart-create', [CartController::class, 'addCart']);
     Route::get('/edit-cart/{id}', [CartController::class, 'editCart']);

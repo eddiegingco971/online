@@ -37,7 +37,7 @@
                   <th>Tracking Number</th>
                   {{-- <th>Order Date</th> --}}
                   {{-- <th>Quantity</th> --}}
-                  <th>Total Amount</th>
+                  <th>Total Payment</th>
                   <th>Payment Method</th>
                   <th>Payment Status</th>
                   <th>Status</th>
@@ -46,21 +46,28 @@
                 </thead>
                 <tbody>
 
-                  @foreach ($orders as $order)
+                  @foreach ($orderItems as $order)
+                  <a href="{{url('view-order/'.$order->id)}}">
                     <tr>
                       {{-- <td>{{$order->id}}</td>
                       <td>{{$order->user_id}}</td> --}}
-                      <td>{{$order->tracking_number}}</td>
+                      <td>{{$order->orders->tracking_number}}</td>
+                      <td>{{$order->orders->total_amount}}</td>
+                      <td>{{$order->orders->payment_method}}</td>
+                      <td>{{$order->orders->payment_status}}</td>
+                      <td>{{$order->orders->status}}</td>
                       {{-- <td>{{$order->order_date}}</td> --}}
                       {{-- <td>{{$order->quantity}}</td> --}}
-                      <td>{{$order->total_amount}}</td>
-                      <td>{{$order->payment_method}}</td>
+                      {{-- <td>{{$order->->product_name}}</td> --}}
+                      {{-- <td>{{$order->}}</td> --}}
+                      {{-- <td>{{$order->payment_method}}</td>
                       <td>{{$order->payment_status}}</td>
-                      <td>{{$order->status}}</td>
+                      <td>{{$order->status}}</td> --}}
                       <td>
-                        <a href="{{url('delete-order/'.$order->id)}}" class="btn btn-success btn-sm">View</a>
+                        <a href="{{url('view-order/'.$order->id)}}" class="btn btn-success btn-sm">View</a>
                       </td>
                     </tr>
+                </a>
                   @endforeach
 
                 </tbody>
@@ -74,6 +81,11 @@
                 </tr>
                 </tfoot> --}}
               </table>
+              <a href="{{url('/collections')}}">
+                <button class="btn btn-sm btn-warning d-flex justify-content-end float-right mt-2">
+                   <i class="fa fa-cart-plus px-1 mt-1" aria-hidden="true"></i> Buy More!
+                </button>
+              </a>
             </div>
             <!-- /.card-body -->
           </div>

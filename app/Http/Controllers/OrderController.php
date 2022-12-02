@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\OrderItems;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -16,15 +18,17 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::where('payment_status', 'unpaid')->get();
+        $orderItems = OrderItems::get();
         $categories = Category::where('created_at', '!=', null)->get();
-        return view('admin.order.index', compact('orders', 'categories'));
+        return view('admin.order.index', compact('orders', 'categories', 'orderItems'));
     }
 
     public function orderDelivered()
     {
         $orders = Order::where('status', 'delivered')->where('payment_status', 'paid')->get();
+        $orderItems = OrderItems::get();
         $categories = Category::where('created_at', '!=', null)->get();
-        return view('admin.order.delivered', compact('orders', 'categories'));
+        return view('admin.order.delivered', compact('orders', 'categories','orderItems'));
     }
 
     /**
@@ -46,7 +50,7 @@ class OrderController extends Controller
     public function store($id)
     {
         $orders = Order::find($id);
-        return view('admin.order.edit', compact('orders'));
+        return view('admin.fee.edit', compact('orders'));
     }
 
     /**
@@ -66,9 +70,12 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+        $orderItems = OrderItems::find($id);
+        $orders = Order::get();
+        $users = User::get();
+        return view('admin.order.edit', compact('orderItems', 'orders', 'users'));
     }
 
     /**
@@ -89,10 +96,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $orders = Order::find($id);
-        $orders->delete();
-        return redirect('/order')->with('status', 'Product Deleted Successfully!');
-    }
+    // public function destroy($id)
+    // {
+    //     $orders = Order::find($id);
+    //     $orders->delete();
+    //     return redirect('/order')->with('status', 'Product Deleted Successfully!');
+    // }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Fee;
 use App\Models\Order;
+use App\Models\OrderItems;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,15 +34,15 @@ class UserController extends Controller
 
     public function index()
     {
-        // $carts = DB::table('carts')->where('user_id', auth()->user()->id)->get();
+        $orderItems = OrderItems::get();
         // $carts = Cart::orderBy('created_at', 'desc')->where('user_id', auth()->user()->id)->get();
         // return view('user.user-cart.index', compact('carts'));
-        return view('user.cart.index');
+        return view('user.cart.index', compact('orderItems'));
     }
 
     public function userOrder(){
-        $orders = Order::get();
-        return view('user.user-order.index', compact('orders'));
+        $orderItems = OrderItems::get();
+        return view('user.user-order.index', compact('orderItems'));
     }
 
     public function destroy($id)
@@ -135,5 +136,13 @@ class UserController extends Controller
 
             return redirect('/profile')->with('error','Current Password does not match with Old Password');
         }
+    }
+
+    public function show($id){
+
+        // $orders= Order::where('user_id', auth()->user()->id)->first();
+        $orders = Order::where('tracking_number', '!=' , null)->get();
+        // $orderItems = OrderItems::get();
+        return view('user.user-order.viewOrder', compact('orders'));
     }
 }

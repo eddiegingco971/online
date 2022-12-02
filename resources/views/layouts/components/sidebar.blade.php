@@ -80,10 +80,10 @@
                 <a href="{{url('/order')}}" class="nav-link">
                   <i class="far fa-calendar nav-icon"></i>
                   @php
-                      $orders = DB::table('orders')->where('status', 'new')->count();
+                      $orderItems = DB::table('order_items')->count();
                   @endphp
                   <p>Today's Order</p>
-                  <span class="badge badge-danger right">{{$orders}}</span>
+                  <span class="badge badge-danger right">{{$orderItems}}</span>
                 </a>
               </li>
 
@@ -199,24 +199,24 @@
 
         {{-- <li class="nav-header">Core Management</li> --}}
         @php
-            $orders = DB::table('orders')->where('status', 'new')->count();
+            $orderItems = DB::table('order_items')->count();
         @endphp
         <li class="nav-item">
           <a href="{{url('/staff')}}" class="nav-link active">
             <i class="nav-icon fas fa-clipboard"></i>
             <p>Today's Order</p>
-            <span class="badge badge-danger right">{{$orders}}</span>
+            <span class="badge badge-danger right">{{$orderItems}}</span>
           </a>
         </li>
         <li class="nav-item">
             <a href="{{url('/staffdelivered')}}" class="nav-link">
               {{-- <i class="far fa-calendar nav-icon"></i> --}}
               <i class="far fa-check-circle nav-icon" aria-hidden="true"></i>
-              @php
+              {{-- @php
                   $orders = DB::table('orders')->where('status', 'delivered')->count();
-              @endphp
+              @endphp --}}
               <p>Delivered</p>
-              <span class="badge badge-danger right">{{$orders}}</span>
+              {{-- <span class="badge badge-danger right">{{$orders}}</span> --}}
             </a>
           </li>
         {{-- <li class="nav-item">
