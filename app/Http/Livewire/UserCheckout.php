@@ -28,9 +28,9 @@ class UserCheckout extends Component
 
     public function placeOrder(){
         $this->validate();
+
         foreach ($this->carts as $cart){
             // $this->totalProductAmount += $cart->products->price * $cart->quantity;
-
         $order = Order::create([
             'user_id'=> auth()->user()->id,
             'product_id'=> $cart->product_id,
@@ -42,6 +42,7 @@ class UserCheckout extends Component
             'payment_status'=>'unpaid',
             'status'=> 'new',
         ]);
+
     }
 
         return $order;

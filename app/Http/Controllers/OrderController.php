@@ -43,9 +43,10 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        $orders = Order::find($id);
+        return view('admin.order.edit', compact('orders'));
     }
 
     /**

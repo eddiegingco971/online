@@ -85,7 +85,7 @@
                       <th>Payment Method</th>
                       <th>Payment Status</th>
                       <th>Status</th>
-                      <th>Action</th>
+                      {{-- <th>Action</th> --}}
                     </tr>
                     </thead>
                     <tbody>
@@ -102,10 +102,10 @@
                           <td>{{$order->payment_method}}</td>
                           <td>{{$order->payment_status}}</td>
                           <td>{{$order->status}}</td>
-                          <td>
+                          {{-- <td>
                             <a href="{{url('edit-order/'.$order->id)}}" class="btn btn-success btn-sm">Edit</a>
                             <a href="{{url('delete-order/'.$order->id)}}" class="btn btn-danger btn-sm">Delete</a>
-                          </td>
+                          </td> --}}
                         </tr>
                       @endforeach
 
